@@ -1,0 +1,23 @@
+CREATE TABLE funcionario(
+	nome VARCHAR(50) NOT NULL,
+	id_func INTEGER NOT NULL AUTO_INCREMENT,
+	cargo VARCHAR(50) NOT NULL,
+	PRIMARY KEY (id_func)
+);
+
+CREATE TABLE carro(
+	placa VARCHAR(7) NOT NULL,
+	modelo VARCHAR(50) NOT NULL,
+	funcionario  INTEGER NOT NULL,
+	PRIMARY KEY (placa,funcionario),
+	FOREIGN KEY (funcionario) REFERENCES funcionario(id_func)
+		ON DELETE CASCADE
+);
+
+CREATE TABLE log(
+	data_hora DATETIME NOT NULL,
+	nome_funcionario VARCHAR(50) NOT NULL,
+	carro VARCHAR(7) NOT NULL,
+	PRIMARY KEY (data_hora)
+);
+

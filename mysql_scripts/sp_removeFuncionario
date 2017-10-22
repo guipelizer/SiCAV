@@ -1,0 +1,9 @@
+DELIMITER $$
+CREATE DEFINER=root@localhost PROCEDURE sp_removeFuncionario (
+	IN p_nome VARCHAR(50)
+)
+BEGIN
+	DELETE FROM funcionario WHERE funcionario.nome = p_nome;
+END $$
+DELIMITER ;
+

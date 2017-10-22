@@ -1,0 +1,26 @@
+DELIMITER $$
+CREATE DEFINER=root@localhost PROCEDURE sp_cadastraLog (
+	IN p_placa VARCHAR(7)
+)
+BEGIN
+	DECLARE p_nome_funcionario VARCHAR(50);
+	SELECT funcionario.nome INTO p_nome_funcionario FROM carro JOIN funcionario ON carro.funcionario = funcionario.id_func WHERE carro.placa = p_placa;
+	IF !( select exists (select 1 from carro where placa = p_placa) ) THEN
+		select 'Car Does not Exists !!';
+	ELSE		
+		insert into log
+		(
+			data_hora,
+			nome_funcionario,
+			carro
+		)
+		values
+		(
+			NOW(),
+			p_nome_funcionario,
+			p_placa
+		);
+	END IF;
+END $$
+DELIMITER ;
+

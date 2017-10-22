@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+    <head>
+	<meta name="viewport content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="../static/css/bootstrap.css">
+        <link rel="stylesheet" href="../static/main.css">        
+
+    	<script type="text/javascript" src="../static/js/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="../static/js/popper.js"></script>
+    	<script>
+	</script>
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="#">Stefano & Pelizer</a>
+	    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+		    <span class="navbar-toggler-icon"></span>
+	    </button>
+	    <div class="collapse navbar-collapse" id="navbarNav">
+	    	<ul class="navbar-nav mr-auto">
+                	<li class="nav-item">
+                    		<a href="/" class="nav-link">Principal</a>
+                	</li>
+                	<li class="nav-item">
+				<a href="{{ url_for('logs') }}" class="nav-link">Log</a>
+                	</li>
+                	<li class="nav-item active">
+				<a href="{{ url_for('gerenciamento')  }}" class="nav-link" >Gerenciamento</a>
+                	</li>
+                	<li class="nav-item">
+                 	   	<a class="nav-link">Administrador</a>
+                	</li>
+            	</ul>
+            	<ul class="navbar-nav ml-auto">
+                	<li class="nav-item">
+                    		<a class="nav-link btn btn-outline-light d-inline-block text-light">Sair</a>
+                	</li>
+           	 </ul>
+	    </div>
+        </nav>
+        
+        
+        <div class="jumbotron">
+            <div class="container">
+                <div class="row" id="cadastro">
+                    <div class="col-6 text-center">
+			<h2>Gerenciar</h2>
+			<div class="panel-heading">
+				<a class="btn btn-lg btn-block btn-secondary" href="/showCadastroFuncionario" > Cadastrar Funcionario </a>
+			</div>
+			<div class="panel-heading">
+				<a class="btn btn-lg btn-block btn-secondary" href="/showCadastroCarro" > Cadastrar Carro </a>
+			</div>
+			<div class="panel-heading">
+				<a class="btn btn-lg btn-block btn-secondary" href="/showRemoverFuncionario" > Remover Funcionario </a>
+			</div>
+			<div class="panel-heading">
+				<a class="btn btn-lg btn-block btn-secondary" href="/showRemoverCarro" > Remover Carro </a>
+			</div>
+		    </div>
+                    <div class="col">
+				<div id="remover_funcionario">
+					<h3 class="text-center"> Remover Funcionario </h3>
+					<form action="{{ url_for('removerFuncionario') }}" method="post" role="form">
+						<select class="form-control" name="inputName">
+							{% for funcionario in funcionarios %}
+								<option>{{ funcionario }}</option>
+							{% endfor %}
+						</select>
+						<input type="submit" value="Remover" id="btn_remove_worker" class="btn btn-lg btn-block btn-secondary">  </input>
+					</form>
+				</div>
+		    </div>
+	         </div>
+            </div>
+        </div>
+        
+        <footer class="footer bg-dark">
+            <div class="container">
+                <p class="text-center text-white"> &copy; Stefano & Pelizer </p>
+            </div>
+        </div>
+        <script src="../static/js/bootstrap.min.js"></script>
+    </body>
+</html>

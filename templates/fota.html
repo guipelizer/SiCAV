@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Stream App</title>
+ 
+    
+    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
+    <script src="../static/js/jquery.js"> </script>
+
+  </head>
+ 
+  <body>
+ 
+    <div class="container">
+      <div class="header">
+          <ul class="nav nav-tabs">
+            <li role="presentation" ><a href="main">Home</a></li>
+            <li role="presentation"><a href="#">Sign In</a></li>
+            <li role="presentation" class="active"><a href="#">Sign Up</a></li>
+          </ul>
+        <h3 class="text-muted">Porteiro Virtual</h3>
+      </div>
+ 
+      <div class="jumbotron">
+	      <center>
+		      <h1>Camera</h1>
+		      <img src="{{ url_for('video_feed') }}">
+	      </center>
+      </div>
+      <div class="jumbotron">
+	<h1> Londoooon </h1>
+	<p> London is the capital of Dhalsim </p>
+      </div>
+ 
+
+      
+     <footer class="footer">
+        <p>&copy; Bruno & Guilherme 2017</p>
+     </footer>
+ 
+    </div>
+  </body>
+</html>

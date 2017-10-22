@@ -1,0 +1,9 @@
+DELIMITER $$
+CREATE DEFINER=root@localhost PROCEDURE sp_removeCarro (
+	IN p_placa VARCHAR(7)
+)
+BEGIN
+	DELETE FROM carro WHERE carro.placa = p_placa;
+END $$
+DELIMITER ;
+

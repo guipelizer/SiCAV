@@ -1,0 +1,31 @@
+DELIMITER $$
+CREATE DEFINER=root@localhost PROCEDURE sp_cadastraCarro (
+	IN p_placa VARCHAR(7),
+	IN p_modelo VARCHAR(50),
+	IN p_nome_funcionario VARCHAR(50)
+)
+BEGIN
+	DECLARE p_id_funcionario INTEGER;
+	SELECT id_func INTO p_id_funcionario FROM funcionario WHERE funcionario.nome = p_nome_funcionario;
+	
+	if ( select exists (select 1 from carro where placa = p_placa) ) THEN
+		select 'Car Exists !!';
+	ELSE
+
+		insert into carro
+		(
+			placa,
+			modelo,
+			funcionario
+		)
+		values
+		(
+			p_placa,
+			p_modelo,
+			p_id_funcionario
+		);
+
+	END IF;
+END $$
+DELIMITER ;
+
